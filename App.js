@@ -1,9 +1,10 @@
 import React , { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import CustomButton from './componentes/CustomButtom/CustomButtom';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import CustomButton from './componentes/Custombuttom/CustomButtom';
 import TextInputBox from './componentes/TextInputBox/TextInputBox';
 import FuncaoOp from './acoes/FuncaoOp';
+import Logo from './componentes/Logo/Logo';
 
 export default function App() {
   const [number1, setNumber1] = useState('');
@@ -13,7 +14,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-
+      <ScrollView contentContainerStyle ={styles.container}>
+      <Logo/>
         <Text style={styles.title}>Quatro operações básicas</Text>
         <TextInputBox
           value={number1}
@@ -38,6 +40,7 @@ export default function App() {
           onPress={() => FuncaoOp(number1, number2, op)}
           style={styles.button}
         />
+      </ScrollView>
     </View>
   );
 }
@@ -52,5 +55,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 20,
+  },
+  scroll:{
+    backgroundColor: '#fff',
   }
 });

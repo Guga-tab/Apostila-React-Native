@@ -1,2 +1,0 @@
-# Apostila-React-Native
-Desenvolvimento de um projeto em **React Native** utilizando a apostila introdutória distribuída pelo professor [Bruno Baruffi](https://github.com/brunobaruffi), na disciplina de **Programação para Dispositivos Móveis** da **Fatec Praia Grande**.
