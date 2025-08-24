@@ -1,35 +1,43 @@
-import React, { useState } from 'react';
+import React , { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import CustomButtom from './componentes/CustomButtom/CustomButtom';
+import CustomButton from './componentes/CustomButtom/CustomButtom';
 import TextInputBox from './componentes/TextInputBox/TextInputBox';
-import FuncaoSoma from './acoes/FuncaoSoma';
+import FuncaoOp from './acoes/FuncaoOp';
 
 export default function App() {
   const [number1, setNumber1] = useState('');
   const [number2, setNumber2] = useState('');
+  const [op, setOp] = useState('');
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text style={styles.title}>Soma de Dois Números</Text>
-      <TextInputBox
-        value={number1}
-        onChangeText={setNumber1}
-        placeholder="Digite o primeiro número"
-        keyboardType="numeric"
-      />
-      <TextInputBox
-        value={number2}
-        onChangeText={setNumber2}
-        placeholder="Digite o segundo número"
-        keyboardType="numeric"
-      />
-      <CustomButtom
-        title="Somar"
-        onPress={() => FuncaoSoma(number1,number2)}
-        style={styles.button}
-      />
+
+        <Text style={styles.title}>Quatro operações básicas</Text>
+        <TextInputBox
+          value={number1}
+          onChangeText={setNumber1}
+          placeholder="Digite o primeiro número"
+          keyboardType="numeric"
+        />
+        <TextInputBox
+          value={number2}
+          onChangeText={setNumber2}
+          placeholder="Digite o segundo número"
+          keyboardType="numeric"
+        />
+        <TextInputBox
+          value={op}
+          onChangeText={setOp}
+          placeholder="Digite o operador"
+          keyboardType="default"
+        />
+        <CustomButton
+          title="Somar"
+          onPress={() => FuncaoOp(number1, number2, op)}
+          style={styles.button}
+        />
     </View>
   );
 }
