@@ -1,22 +1,39 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import CustomButton from './componentes/Custombuttom/CustomButtom';
 import TextInputBox from './componentes/TextInputBox/TextInputBox';
-import FuncaoOp from './acoes/FuncaoOp';
-import Logo from './componentes/Logo/Logo';
+import CalculaMedia from './acoes/CalculaMedia';
+import ImgAprovado from './componentes/Imgs/ImgAprovado';
+import ImgReprovado from './componentes/Imgs/ImgReprovado';
 
 export default function App() {
   const [number1, setNumber1] = useState('');
   const [number2, setNumber2] = useState('');
-  const [op, setOp] = useState('');
+  const [number3, setNumber3] = useState('');
+  const [media, setMedia] = useState(null);
+
+  let numbers = [number1, number2, number3];
+
+  function img() {
+    const mediaCalculada = CalculaMedia(numbers);
+
+    if (isNaN(mediaCalculada)) {
+      alert('Por favor, insira números válidos!');
+      return;
+    }
+
+    setMedia(mediaCalculada);
+  }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ScrollView contentContainerStyle ={styles.container}>
-      <Logo/>
-        <Text style={styles.title}>Quatro operações básicas</Text>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Calcular Média</Text>
+
+        {media !== null && media >= 6 ? <ImgAprovado /> : media !== null && <ImgReprovado />}
+
         <TextInputBox
           value={number1}
           onChangeText={setNumber1}
@@ -30,14 +47,19 @@ export default function App() {
           keyboardType="numeric"
         />
         <TextInputBox
-          value={op}
-          onChangeText={setOp}
-          placeholder="Digite o operador"
-          keyboardType="default"
+          value={number3}
+          onChangeText={setNumber3}
+          placeholder="Digite o terceiro número"
+          keyboardType="numeric"
         />
+
+        <Text style={styles.title}>
+          {media !== null ? `Média: ${media}` : 'Digite os números para calcular'}
+        </Text>
+
         <CustomButton
-          title="Somar"
-          onPress={() => FuncaoOp(number1, number2, op)}
+          title="Calcular"
+          onPress={img}
           style={styles.button}
         />
       </ScrollView>
@@ -56,7 +78,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
   },
-  scroll:{
-    backgroundColor: '#fff',
-  }
+  button: {
+    marginTop: 20,
+  },
 });
