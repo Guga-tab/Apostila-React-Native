@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Text} from 'react-native';
-import TextInputBox from '../../componentes/TextInputBox/TextInputBox'
-import CustomButton from '../../componentes/Custombuttom/CustomButtom'
+import TextInputBox from '../../components/TextInputBox/TextInputBox'
+import CustomButton from '../../components/CustomButtom/CustomButtom'
 import { Picker } from '@react-native-picker/picker';
 import MathUtils from '../../utils/MathUtils';
 
