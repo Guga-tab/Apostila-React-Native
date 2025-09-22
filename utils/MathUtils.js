@@ -51,6 +51,22 @@ class MathUtils{
             return "Obsidade Grave grau 3";
         }
     }
+
+    static bhaskara(A, B, C){
+
+        let numA = parseFloat(A)
+        let numB = parseFloat(B)
+        let numC = parseFloat(C)
+
+        if(isNaN(numA) || isNaN(numB) || isNaN(numC)){
+            alert("ERRO!!!")
+            return
+        }
+        const delta = Math.pow(numB, 2) - 4 * numA * numC
+        const x1 = (-numB + Math.sqrt(delta)) / (2 * numA)
+        const x2 = (-numB - Math.sqrt(delta)) / (2 * numA)
+        return [x1, x2]
+    }
 }
 
 export default MathUtils;
